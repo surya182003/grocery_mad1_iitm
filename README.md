@@ -9,6 +9,8 @@ Created for the submission of MAD - 1 project.
   - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Getting Started
 
