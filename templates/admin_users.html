@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Admin Dashboard - Manage Users</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>
+            {% if not user.is_admin %}
+              <a href="{{ url_for('make_admin', user_id=user.id) }}" class="btn btn-primary">Make Admin</a>
+            {% else %}
+              <span class="badge badge-success">Admin</span>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    <a href="{{ url_for('admin_index') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

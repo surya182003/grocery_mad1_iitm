@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Add Product to {{ category.name }}</h1>
+  
+  <form method="post">
+    <div class="form-group">
+      <label for="product_name">Product Name</label>
+      <input type="text" class="form-control" id="product_name" name="product_name" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input type="number" class="form-control" id="quantity" name="quantity" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </form>
+  
+  <a href="{{ url_for('admin_category', category_id=category.id) }}" class="btn btn-secondary mt-3">Back to Category</a>
+{% endblock %}

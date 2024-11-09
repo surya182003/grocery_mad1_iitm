@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Welcome to our grocery store!</h1>
+				<form class="form-inline mb-4" method="GET" action="{{ url_for('search') }}">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search products" aria-label="Search" name="q">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+    {% for category in categories %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{ url_for('category', category_id=category.id) }}">{{ category.name }}</a>
+                </h5>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Your Cart</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product, quantity in products_in_cart %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>Rupees {{ product.price }}</td>
+                    <td>{{ quantity }}</td>
+					                <td>
+                    <a href="{{ url_for('remove_from_cart', product_id=product.id) }}" class="btn btn-warning">Delete</a>
+                </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Total Quantity: {{ total_quantity }}</p>
+    <p>Total Amount: Rupees {{ total_amount }}</p>
+	
+	<a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+	<a href="{{ url_for('checkout') }}" class="btn btn-primary mt-3">Checkout</a>
+{% endblock %}

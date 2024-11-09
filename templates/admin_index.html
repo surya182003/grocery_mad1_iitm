@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Admin Dashboard</h1>
+  
+  <a href="{{ url_for('add_category') }}" class="btn btn-primary mb-3">Add New Category</a>
+  
+  <!-- Make Admin Button -->
+  <a href="{{ url_for('admin_users') }}" class="btn btn-success mb-3">Make Admin</a>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Category Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in categories %}
+        <tr>
+          <td>{{ category.name }}</td>
+          <td>
+            <a href="{{ url_for('admin_category', category_id=category.id) }}" class="btn btn-secondary btn-sm">View Products</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
